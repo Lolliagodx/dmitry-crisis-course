@@ -1,0 +1,8 @@
+import {createServer} from 'node:http';
+import assert from 'node:assert/strict';
+import {createEmailHandler} from '../server/test-email.mjs';
+let sent=0, current=Date.now(), fail=false;
+const handler=createEmailHandler({config:()=>({RESEND_API_KEY:'test-key',TEST_RECIPIENT_EMAIL:'owner@example.com',TEST_SITE_ORIGIN:'http://localhost:3000'}),now:()=>current,send:async(url,request)=>{sent++;assert.equal(url,'https://api.resend.com/emails');const body=JSON.parse(request.body);assert.deepEqual(body.to,['owner@example.com']);assert.equal(body.text,'тестовый курс (здесь будет ссылка)');return new Response(JSON.stringify(fail?{error:'test'}:{id:'test-id'}),{status:fail?403:200});}});
+const server=createServer(handler);await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const url=`http://127.0.0.1:${server.address().port}/api/test-course`;
+async function post(body,origin='http://localhost:3000'){return fetch(url,{method:'POST',headers:{'Content-Type':'application/json',Origin:origin},body:JSON.stringify(body)});}
+try{assert.equal((await post({email:'owner@example.com'},'https://wrong.example')).status,403);assert.equal((await post({email:'other@example.com'})).status,400);assert.equal(sent,0);assert.equal((await post({email:'OWNER@example.com',text:'untrusted content'})).status,200);assert.equal(sent,1);assert.equal((await post({email:'owner@example.com'})).status,429);assert.equal(sent,1);current+=61000;fail=true;assert.equal((await post({email:'owner@example.com'})).status,502);console.log('PASS: origin, recipient restriction, exact email content, cooldown, provider failure. No real email sent.');}finally{server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
