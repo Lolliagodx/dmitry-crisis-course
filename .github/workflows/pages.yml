@@ -25,13 +25,19 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - name: Install Next.js for static export
+        run: npm install --no-save --legacy-peer-deps next@16
+      - name: Build static site
+        run: npx next build
         env:
           GITHUB_PAGES: 'true'
+          NEXT_TELEMETRY_DISABLED: '1'
+      - name: Verify exported homepage
+        run: test -f out/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/client
+          path: out
 
   deploy:
     needs: build
