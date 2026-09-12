@@ -79,3 +79,13 @@ React 19, TypeScript, Vinext/Vite, CSS, Lucide. Статический эксп�
 Статический GitHub Pages и `npm run preview` не имеют почтового backend: их форма прямо сообщает, что отправка не подключена. Для публичного сайта понадобится размещение серверного обработчика, постоянные ограничения и настройки секретов на хостинге. Никаких секретов или email владельца в статической сборке нет.
 
 Проверка обработчика без реальных писем: `node scripts/test-email.mjs`. Проверены запрещённый Origin, чужой получатель, фиксированное содержимое, повторный запрос и отказ сервиса.
+
+## Black and gold redesign — 12 September 2026
+
+The original landing section order is preserved: course, author, approach, program, participation, footer. Biography and course copy are grounded in the supplied personal-story document and interview transcript (26 August 2026). No qualifications, dates, pricing, results guarantees, or social URLs were invented. Missing information is represented by empty, aria-hidden layout regions. The portrait region is intentionally empty.
+
+The public page does not mount TestEmail and contains no payment integration or email form. Existing local test-email source remains available separately. Raw interview files and local environment credentials are not committed.
+
+Visual references: Behance projects 181318437 (financial advisor), 152870729 (Ebook), and the user's black/gold direction. Dark backgrounds, muted metallic gold, fine borders, spacious layout, serif accents. No third-party portrait or artwork was copied.
+
+Rollback: branch `backup/pre-black-gold-20260912` preserves commit `8fd9ea7b4ea0788417d61ad05dba02c32fac2e66`. Local source ZIP and full Git bundle are in the parent `backups` directory. Restore through a new commit rather than rewriting main history.
