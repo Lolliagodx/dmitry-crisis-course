@@ -9,7 +9,7 @@ const topics = [
 ];
 
 function Brand() {
-  return <a className="brand" href="#course" aria-label="Дмитрий — к началу страницы"><span className="brand-mark">д.</span><span>ДМИТРИЙ<small>НОВАЯ ТОЧКА ОТСЧЁТА</small></span></a>;
+  return <a className="brand course-brand" href="#course" aria-label="Новая точка отсчета — к началу страницы"><svg className="course-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M49 38a23 23 0 1 1-23-29" stroke="currentColor" strokeWidth="2" /><path d="M32 32 53 11M39 11h14v14" stroke="currentColor" strokeWidth="2" /><circle cx="32" cy="32" r="5" fill="currentColor" /></svg><span className="course-wordmark">НОВАЯ ТОЧКА<span>ОТСЧЕТА</span></span></a>;
 }
 
 export default function Home() {
@@ -22,10 +22,10 @@ export default function Home() {
     </header>
     <main>
       <section className="hero wrap" id="course">
-        <div className="hero-top"><span className="eyebrow"><span className="dot" />ОБРАЗОВАТЕЛЬНАЯ ПРОГРАММА САМОПОМОЩИ</span><span className="edition" aria-hidden="true">ДМИТРИЙ / ОНЛАЙН-КУРС</span></div>
+        <div className="hero-top"><span className="eyebrow"><span className="dot" />ОБРАЗОВАТЕЛЬНАЯ ПРОГРАММА САМОПОМОЩИ</span><span className="edition" aria-hidden="true">НОВАЯ ТОЧКА ОТСЧЕТА / ОНЛАЙН-КУРС</span></div>
         <div className="hero-grid">
-          <div className="hero-copy"><p className="kicker">ПЕРЕМЕНЫ НАЧИНАЮТСЯ С ВАС</p><h1>Личностный кризис.<br /><em>Новая точка<br />отсчёта.</em></h1><p className="hero-description">Курс по преодолению личностного кризиса: от честной оценки своей жизни к целям и ежедневной практике. Здоровье и энергия, эмоции, отношения, реализация и финансы — шаг за шагом от точки А к своей точке Б.</p><a className="button" href="#purchase">Узнать об участии <ArrowUpRight size={20} /></a><p className="hero-note">10 учебных блоков. Практики и домашние задания.</p></div>
-          <div className="hero-art" aria-hidden="true"><div className="art-line" /><div className="orbital"><i /><i /><i /><i /><span>↗</span></div><span className="art-word">ВЫБРАТЬ<br />СВОЙ ПУТЬ</span><span className="art-caption">НОВАЯ ТОЧКА ОТСЧЁТА</span><span className="art-corner">01 — ∞</span></div>
+          <div className="hero-copy"><p className="kicker">ПЕРЕМЕНЫ НАЧИНАЮТСЯ С ВАС</p><h1>Личностный кризис.<br /><em>Новая точка<br />отсчета.</em></h1><p className="hero-description">Курс по преодолению личностного кризиса: от честной оценки своей жизни к целям и ежедневной практике. Здоровье и энергия, эмоции, отношения, реализация и финансы — шаг за шагом от точки А к своей точке Б.</p><a className="button" href="#purchase">Узнать об участии <ArrowUpRight size={20} /></a><p className="hero-note">10 учебных блоков. Практики и домашние задания.</p></div>
+          <div className="hero-art" aria-hidden="true"><div className="art-line" /><div className="orbital"><i /><i /><i /><i /><span>↗</span></div><span className="art-word">ВЫБРАТЬ<br />СВОЙ ПУТЬ</span><span className="art-caption">НОВАЯ ТОЧКА ОТСЧЕТА</span><span className="art-corner">01 — ∞</span></div>
         </div>
         <div className="facts"><div><small>ФОРМАТ</small><span>Онлайн-программа</span></div><div className="reserved-fact" aria-hidden="true" /><div className="reserved-fact" aria-hidden="true" /><a href="#about" aria-label="Перейти к блоку об авторе"><ArrowDown size={21} /></a></div>
       </section>
@@ -43,9 +43,9 @@ export default function Home() {
         <div className="boundary"><Compass size={24} /><p>Программа посвящена самопомощи и жизненным ориентирам. Она не предназначена для диагностики или лечения заболеваний и не заменяет профессиональную помощь.</p></div>
       </div></section>
       <section className="section wrap program" id="program"><div><span className="eyebrow">03 / СОДЕРЖАНИЕ</span><h2>От понимания себя<br /><em>к новой главе.</em></h2><p className="muted">Десять учебных блоков: от точки А и целей через здоровье, эмоции и отношения к реализации, финансам и интеграции. Здесь они собраны в четыре темы.</p><span className="program-sign" aria-hidden="true">МЫСЛЬ → ДЕЙСТВИЕ → ОПЫТ</span></div><div className="topic-list">{topics.map(([n, title, copy, practice]) => <details key={n}><summary><span>{n}</span><h3>{title}</h3><span className="plus" aria-hidden="true">+</span></summary><div className="topic-content"><p>{copy}</p><p className="practice">{practice}</p></div></details>)}</div></section>
-      <section className="wrap purchase" id="purchase"><div><span className="eyebrow">04 / УЧАСТИЕ</span><h2>Ваш следующий шаг.<br /><em>В своём темпе.</em></h2><p>Для тех, кто чувствует: «Я так больше не хочу» — и готов честно посмотреть на свою жизнь и выполнять задания. Курс даёт систему для самостоятельной работы: от оценки пяти сфер до личного ежедневника практик.</p><div className="purchase-meta" aria-hidden="true" /></div><div className="purchase-card"><span className="kicker">КУРС ДМИТРИЯ</span><h3>Новая точка<br /><em>отсчёта.</em></h3><p className="muted">Оценить свою точку А.<br />Определить цели.<br />Собрать личный план действий.</p><div className="participation-space" aria-hidden="true" /><TestEmail /></div></section>
+      <section className="wrap purchase" id="purchase"><div><span className="eyebrow">04 / УЧАСТИЕ</span><h2>Ваш следующий шаг.<br /><em>В своём темпе.</em></h2><p>Для тех, кто чувствует: «Я так больше не хочу» — и готов честно посмотреть на свою жизнь и выполнять задания. Курс даёт систему для самостоятельной работы: от оценки пяти сфер до личного ежедневника практик.</p><div className="purchase-meta" aria-hidden="true" /></div><div className="purchase-card"><span className="kicker">ОНЛАЙН-КУРС</span><h3>Новая точка<br /><em>отсчета.</em></h3><p className="muted">Оценить свою точку А.<br />Определить цели.<br />Собрать личный план действий.</p><div className="participation-space" aria-hidden="true" /><TestEmail /></div></section>
     </main>
-    <footer className="wrap footer"><div className="footer-top"><Brand /><div className="footer-social" aria-hidden="true" /><a className="back-top" href="#course">Наверх <ArrowUpRight size={18} /></a></div><div className="legal"><p>© 2026 Дмитрий.<br />Образовательная программа самопомощи.</p><div className="legal-space" aria-hidden="true" /><p>Материалы курса не являются медицинскими рекомендациями. Программа не заменяет психотерапию или лечение.</p></div></footer>
+    <footer className="wrap footer"><div className="footer-top"><Brand /><div className="footer-social" aria-hidden="true" /><a className="back-top" href="#course">Наверх <ArrowUpRight size={18} /></a></div><div className="legal"><p>© 2026 Новая точка отсчета.<br />Образовательная программа самопомощи.</p><div className="legal-space" aria-hidden="true" /><p>Материалы курса не являются медицинскими рекомендациями. Программа не заменяет психотерапию или лечение.</p></div></footer>
   </>;
 }
 
