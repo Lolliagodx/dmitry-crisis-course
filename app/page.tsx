@@ -1,5 +1,6 @@
 import TestEmail from './test-email';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, ArrowUpRight, UserRound, FileText, Leaf } from 'lucide-react';
 
 const situations = [
   ['01', 'Всё вроде нормально. Но радости нет.', 'Работа, дела, привычный распорядок. Вы справляетесь, но всё чаще спрашиваете себя: «Неужели теперь всегда будет так?»'],
@@ -27,21 +28,27 @@ export default function Home() {
       <div className="header-end"><div className="social-space" aria-hidden="true" /><a className="small-cta" href="#purchase">Участие <ArrowUpRight size={17} /></a></div>
     </header>
     <main>
-      <section className="hero wrap" id="course">
-        <div className="hero-top"><span className="eyebrow"><span className="dot" />О СЕБЕ И СВОЕЙ ЖИЗНИ</span><span className="edition" aria-hidden="true">ЛИЧНЫЙ ОПЫТ / КУРСЫ / ПРАКТИКИ</span></div>
-        <div className="hero-grid">
-          <div className="hero-copy"><p className="kicker">КОГДА ПО-ПРЕЖНЕМУ УЖЕ НЕ ХОЧЕТСЯ</p><h1>Живёте как надо.<br /><em>А хочется —<br />по-своему.</em></h1><p className="hero-description">Когда привычная жизнь больше не радует, а что менять — непонятно, трудно сделать первый шаг. Здесь — курс и практики, чтобы разобраться в себе и начать действовать.</p><a className="button" href="#program">Найти курс для себя <ArrowUpRight size={20} /></a><p className="hero-note">Можно начать, даже если пока нет готовых ответов.</p></div>
-          <div className="hero-art" aria-hidden="true"><div className="art-line" /><div className="orbital"><i /><i /><i /><i /><span>↗</span></div><span className="art-word">УСЛЫШАТЬ СЕБЯ.<br />ВЫБРАТЬ СВОЁ.</span><span className="art-caption">ПЕРЕМЕНЫ В ПОВСЕДНЕВНОЙ ЖИЗНИ</span><span className="art-corner">01 — ∞</span></div>
+      <section className="personal-hero" id="course" aria-labelledby="author-name">
+        <div className="personal-hero-inner wrap">
+          <div className="personal-hero-ring" aria-hidden="true" />
+          <div className="personal-hero-photo"><Image unoptimized src={`${process.env.GITHUB_PAGES === 'true' ? '/dmitry-crisis-course' : ''}/dmitry-davydov-hero.webp`} width="1122" height="1402" alt="Дмитрий Давыдов" fetchPriority="high" /></div>
+          <blockquote className="personal-hero-quote"><span aria-hidden="true">“</span><p>Перемены начинаются<br />с честного разговора<br />с самим собой.</p></blockquote>
+          <div className="personal-hero-copy">
+            <p className="personal-hero-eyebrow">ЛИЧНЫЙ ОПЫТ / КУРСЫ / ПРАКТИКИ</p>
+            <h1 id="author-name">Дмитрий<br /><em>Давыдов</em></h1>
+            <p className="personal-hero-role">Автор курса о личностных переменах</p>
+            <p className="personal-hero-description">Помогает разобраться в себе, услышать собственные желания и сделать первый шаг к переменам через личный опыт, практики и самостоятельную работу.</p>
+            <div className="personal-hero-actions"><a className="button" href="#about">Об авторе <ArrowRight size={23} /></a><a className="button button-outline" href="#program">Посмотреть курс <ArrowRight size={23} /></a></div>
+            <ul className="personal-hero-features"><li><span className="feature-icon"><UserRound size={28} strokeWidth={1.6} /></span><span>Личный<br />опыт</span></li><li><span className="feature-icon"><FileText size={28} strokeWidth={1.6} /></span><span>Практические<br />задания</span></li><li><span className="feature-icon"><Leaf size={28} strokeWidth={1.6} /></span><span>Мягкий<br />понятный подход</span></li></ul>
+          </div>
         </div>
-        <div className="facts"><div><small>С ЧЕГО НАЧАТЬ</small><span>С того, что беспокоит вас сейчас</span></div><div className="reserved-fact" aria-hidden="true" /><div className="reserved-fact" aria-hidden="true" /><a href="#approach" aria-label="Перейти к жизненным ситуациям"><ArrowDown size={21} /></a></div>
       </section>
       <section className="approach" id="approach"><div className="wrap section">
         <div className="section-heading"><div><span className="eyebrow">01 / ЗНАКОМОЕ ЧУВСТВО</span><h2>«Я так больше не хочу».<br /><em>А как хочу — не знаю.</em></h2></div><p className="heading-note">Иногда дело не в одном большом событии. Просто всё чаще замечаете, что в собственной жизни вам не хватает места для себя.</p></div>
         <div className="approach-grid">{situations.map(([n, title, copy]) => <article key={n}><span className="step">{n}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
         <div className="pain-next"><p>Если узнали себя, можно начать с простого: разобраться, что вас не устраивает и что вы готовы сделать иначе.</p><a className="text-cta" href="#program">Посмотреть курс <ArrowUpRight size={18} /></a></div>
       </div></section>
-      <section className="section wrap author" id="about">
-        <div className="portrait" aria-hidden="true" />
+      <section className="section wrap author author-information" id="about">
         <div className="author-copy" aria-hidden="true"><div className="author-bottom"><div className="social-space" /></div></div>
       </section>
       <section className="section wrap program course-offer" id="program">
