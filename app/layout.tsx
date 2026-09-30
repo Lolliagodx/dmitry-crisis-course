@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import CourseTools from './course-tools';
-export const metadata: Metadata = { title: 'Новая точка отсчета', description: 'Образовательная программа самопомощи: точка А и цели, здоровье и энергия, эмоции, отношения, реализация, финансы и ежедневная практика.', icons: { icon: `${process.env.GITHUB_PAGES === 'true' ? '/dmitry-crisis-course' : ''}/favicon.svg?v=green-2` }, robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: 'Курсы и практики — о себе и своей жизни', description: 'Когда привычная жизнь больше не радует: курс о личностном кризисе, собственных желаниях и первых шагах к переменам.', icons: { icon: `${process.env.GITHUB_PAGES === 'true' ? '/dmitry-crisis-course' : ''}/favicon.svg?v=green-2` }, robots: { index: false, follow: false } };
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) { return <html lang="ru"><body>{children}<CourseTools/></body></html> }

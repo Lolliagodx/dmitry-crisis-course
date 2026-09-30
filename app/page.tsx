@@ -1,15 +1,21 @@
 import TestEmail from './test-email';
-import { ArrowDown, ArrowUpRight, Compass } from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
-const topics = [
-  ['01', 'Точка А и цели', 'Оценка пяти сфер: здоровье и энергия, отношения, реализация, финансы и яркость жизни. Поиск собственных желаний за ожиданиями окружающих. Образ себя через десять лет и конкретные цели по SMART — ваша точка Б.', 'Практика: колесо баланса с оценками от 1 до 10, письменный образ будущего и ежедневные вопросы: что я сделаю для цели утром и что получилось к вечеру.'],
-  ['02', 'Здоровье, энергия и эмоции', 'Внимание к сну, дыханию, напряжению и тому, что забирает силы. Тревога, страх, гнев, зависть и личные желания. Регулярность и дисциплина в повседневных действиях.', 'Практика: составить список того, что отнимает энергию, внедрять одну привычку за раз и неделю записывать свои эмоции и ситуации, в которых они возникают.'],
-  ['03', 'Отношение к себе и близким', 'Самооценка, роль спасателя и привычка быть удобным. Признание собственных заслуг, отношения с родителями, благодарность и невысказанные чувства. Личные границы и поддержка в отношениях с партнёром.', 'Практика: дневник успеха, письма родителям для самостоятельной работы и разговор с партнёром по схеме «факты → чувства → просьба».'],
-  ['04', 'Реализация, финансы и интеграция', 'Поиск направления через интересы, навыки и вопросы к себе. В авторском сценарии — разбор с ИИ и натальная карта как повод для размышлений, а не предсказание судьбы. Текущий и желаемый доход, установки о деньгах и возможные инструменты роста. Завершение — личный набор практик и понимание, когда нужна помощь специалиста.', 'Практика: вопросы для самоисследования, финансовый план на три месяца с шагами и сроками, личный ежедневник и повторная оценка колеса баланса.'],
+const situations = [
+  ['01', 'Всё вроде нормально. Но радости нет.', 'Работа, дела, привычный распорядок. Вы справляетесь, но всё чаще спрашиваете себя: «Неужели теперь всегда будет так?»'],
+  ['02', 'На всех хватает сил. На себя — нет.', 'Вы стараетесь быть хорошим партнёром, сотрудником, родителем. А собственные желания снова откладываете на потом.'],
+  ['03', 'Хочется перемен. Непонятно, с чего начать.', 'Советов много, мыслей ещё больше. Вы пробуете что-то изменить, но возвращаетесь к привычному и откладываете решение.'],
+];
+
+const questions = [
+  ['01', 'Нужно ли заранее знать, чего я хочу?', 'Нет. Курс рассчитан в том числе на ситуацию, когда трудно разобраться в своих желаниях. Вопросы и письменные задания помогают начать этот разговор с собой.'],
+  ['02', 'Это только видео или нужно что-то делать?', 'В курсе есть практики и домашние задания для самостоятельной работы. Смотреть материалы можно, но смысл участия — пробовать задания в своей жизни.'],
+  ['03', 'Мне нужно изменить сразу всю жизнь?', 'Нет. Можно начать с того, что сейчас беспокоит больше всего, и выбрать посильное действие. Вам не нужно решать все вопросы одновременно.'],
+  ['04', 'Где узнать стоимость и условия участия?', 'Условия участия и оплата пока не опубликованы. Сейчас на сайте доступна только тестовая форма: она не отправляет email и не оформляет покупку.'],
 ];
 
 function Brand() {
-  return <a className="brand course-brand" href="#course" aria-label="Новая точка отсчета — к началу страницы"><svg className="course-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M49 38a23 23 0 1 1-23-29" stroke="currentColor" strokeWidth="2" /><path d="M32 32 53 11M39 11h14v14" stroke="currentColor" strokeWidth="2" /><circle cx="32" cy="32" r="5" fill="currentColor" /></svg><span className="course-wordmark">НОВАЯ ТОЧКА<span>ОТСЧЕТА</span></span></a>;
+  return <a className="brand course-brand" href="#course" aria-label="К началу страницы"><svg className="course-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M49 38a23 23 0 1 1-23-29" stroke="currentColor" strokeWidth="2" /><path d="M32 32 53 11M39 11h14v14" stroke="currentColor" strokeWidth="2" /><circle cx="32" cy="32" r="5" fill="currentColor" /></svg><span className="course-wordmark">ЛИЧНЫЙ ПУТЬ<span>КУРСЫ И ПРАКТИКИ</span></span></a>;
 }
 
 export default function Home() {
@@ -17,35 +23,34 @@ export default function Home() {
     <a className="skip" href="#course">Перейти к содержанию</a>
     <header className="header">
       <Brand />
-      <nav aria-label="Основное меню"><a href="#about">Об авторе</a><a href="#approach">Подход</a><a href="#program">Программа</a></nav>
-      <div className="header-end"><div className="social-space" aria-hidden="true" /><a className="small-cta" href="#purchase">О курсе <ArrowUpRight size={17} /></a></div>
+      <nav aria-label="Основное меню"><a href="#about">Об авторе</a><a href="#program">Курсы</a><a href="#questions">Вопросы</a></nav>
+      <div className="header-end"><div className="social-space" aria-hidden="true" /><a className="small-cta" href="#purchase">Участие <ArrowUpRight size={17} /></a></div>
     </header>
     <main>
       <section className="hero wrap" id="course">
-        <div className="hero-top"><span className="eyebrow"><span className="dot" />ОБРАЗОВАТЕЛЬНАЯ ПРОГРАММА САМОПОМОЩИ</span><span className="edition" aria-hidden="true">НОВАЯ ТОЧКА ОТСЧЕТА / ОНЛАЙН-КУРС</span></div>
+        <div className="hero-top"><span className="eyebrow"><span className="dot" />О СЕБЕ И СВОЕЙ ЖИЗНИ</span><span className="edition" aria-hidden="true">ЛИЧНЫЙ ОПЫТ / КУРСЫ / ПРАКТИКИ</span></div>
         <div className="hero-grid">
-          <div className="hero-copy"><p className="kicker">ПЕРЕМЕНЫ НАЧИНАЮТСЯ С ВАС</p><h1>Личностный кризис.<br /><em>Новая точка<br />отсчета.</em></h1><p className="hero-description">Курс по преодолению личностного кризиса: от честной оценки своей жизни к целям и ежедневной практике. Здоровье и энергия, эмоции, отношения, реализация и финансы — шаг за шагом от точки А к своей точке Б.</p><a className="button" href="#purchase">Узнать об участии <ArrowUpRight size={20} /></a><p className="hero-note">10 учебных блоков. Практики и домашние задания.</p></div>
-          <div className="hero-art" aria-hidden="true"><div className="art-line" /><div className="orbital"><i /><i /><i /><i /><span>↗</span></div><span className="art-word">ВЫБРАТЬ<br />СВОЙ ПУТЬ</span><span className="art-caption">НОВАЯ ТОЧКА ОТСЧЕТА</span><span className="art-corner">01 — ∞</span></div>
+          <div className="hero-copy"><p className="kicker">КОГДА ПО-ПРЕЖНЕМУ УЖЕ НЕ ХОЧЕТСЯ</p><h1>Живёте как надо.<br /><em>А хочется —<br />по-своему.</em></h1><p className="hero-description">Когда привычная жизнь больше не радует, а что менять — непонятно, трудно сделать первый шаг. Здесь — курс и практики, чтобы разобраться в себе и начать действовать.</p><a className="button" href="#program">Найти курс для себя <ArrowUpRight size={20} /></a><p className="hero-note">Можно начать, даже если пока нет готовых ответов.</p></div>
+          <div className="hero-art" aria-hidden="true"><div className="art-line" /><div className="orbital"><i /><i /><i /><i /><span>↗</span></div><span className="art-word">УСЛЫШАТЬ СЕБЯ.<br />ВЫБРАТЬ СВОЁ.</span><span className="art-caption">ПЕРЕМЕНЫ В ПОВСЕДНЕВНОЙ ЖИЗНИ</span><span className="art-corner">01 — ∞</span></div>
         </div>
-        <div className="facts"><div><small>ФОРМАТ</small><span>Онлайн-программа</span></div><div className="reserved-fact" aria-hidden="true" /><div className="reserved-fact" aria-hidden="true" /><a href="#about" aria-label="Перейти к блоку об авторе"><ArrowDown size={21} /></a></div>
+        <div className="facts"><div><small>С ЧЕГО НАЧАТЬ</small><span>С того, что беспокоит вас сейчас</span></div><div className="reserved-fact" aria-hidden="true" /><div className="reserved-fact" aria-hidden="true" /><a href="#approach" aria-label="Перейти к жизненным ситуациям"><ArrowDown size={21} /></a></div>
       </section>
+      <section className="approach" id="approach"><div className="wrap section">
+        <div className="section-heading"><div><span className="eyebrow">01 / ЗНАКОМОЕ ЧУВСТВО</span><h2>«Я так больше не хочу».<br /><em>А как хочу — не знаю.</em></h2></div><p className="heading-note">Иногда дело не в одном большом событии. Просто всё чаще замечаете, что в собственной жизни вам не хватает места для себя.</p></div>
+        <div className="approach-grid">{situations.map(([n, title, copy]) => <article key={n}><span className="step">{n}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
+        <div className="pain-next"><p>Если узнали себя, можно начать с простого: разобраться, что вас не устраивает и что вы готовы сделать иначе.</p><a className="text-cta" href="#program">Посмотреть курс <ArrowUpRight size={18} /></a></div>
+      </div></section>
       <section className="section wrap author" id="about">
         <div className="portrait" aria-hidden="true" />
         <div className="author-copy" aria-hidden="true"><div className="author-bottom"><div className="social-space" /></div></div>
       </section>
-      <section className="approach" id="approach"><div className="wrap section">
-        <div className="section-heading"><div><span className="eyebrow">02 / ПОДХОД</span><h2>Увидеть точку А.<br /><em>Выбрать точку Б.</em></h2></div><p className="heading-note">Каждый учебный блок завершается практикой и домашним заданием. Вы фиксируете свою ситуацию, определяете цели и возвращаетесь к ним через конкретные действия.</p></div>
-        <div className="approach-grid">{[
-          ['01', 'Честная оценка', 'Оценить пять сфер жизни по колесу баланса. Записать текущую картину и увидеть, чему вы хотите уделить внимание.'],
-          ['02', 'Цель и действие', 'Описать желаемое будущее и разбить его на достижимые шаги. Утром выбирать действие для цели, вечером — подводить итог.'],
-          ['03', 'Интеграция', 'Собрать подходящие практики в личный ежедневник. Возвращаться к колесу баланса, сравнивать оценки и замечать изменения.'],
-        ].map(([n, title, copy]) => <article key={n}><span className="step">{n}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
-        <div className="boundary"><Compass size={24} /><p>Программа посвящена самопомощи и жизненным ориентирам. Она не предназначена для диагностики или лечения заболеваний и не заменяет профессиональную помощь.</p></div>
-      </div></section>
-      <section className="section wrap program" id="program"><div><span className="eyebrow">03 / СОДЕРЖАНИЕ</span><h2>От понимания себя<br /><em>к новой главе.</em></h2><p className="muted">Десять учебных блоков: от точки А и целей через здоровье, эмоции и отношения к реализации, финансам и интеграции. Здесь они собраны в четыре темы.</p><span className="program-sign" aria-hidden="true">МЫСЛЬ → ДЕЙСТВИЕ → ОПЫТ</span></div><div className="topic-list">{topics.map(([n, title, copy, practice]) => <details key={n}><summary><span>{n}</span><h3>{title}</h3><span className="plus" aria-hidden="true">+</span></summary><div className="topic-content"><p>{copy}</p><p className="practice">{practice}</p></div></details>)}</div></section>
-      <section className="wrap purchase" id="purchase"><div><span className="eyebrow">04 / УЧАСТИЕ</span><h2>Ваш следующий шаг.<br /><em>В своём темпе.</em></h2><p>Для тех, кто чувствует: «Я так больше не хочу» — и готов честно посмотреть на свою жизнь и выполнять задания. Курс даёт систему для самостоятельной работы: от оценки пяти сфер до личного ежедневника практик.</p><div className="purchase-meta" aria-hidden="true" /></div><div className="purchase-card"><span className="kicker">ОНЛАЙН-КУРС</span><h3>Новая точка<br /><em>отсчета.</em></h3><p className="muted">Оценить свою точку А.<br />Определить цели.<br />Собрать личный план действий.</p><div className="participation-space" aria-hidden="true" /><TestEmail /></div></section>
+      <section className="section wrap program course-offer" id="program">
+        <div><span className="eyebrow">02 / КУРСЫ</span><h2>Когда хочется<br /><em>что-то изменить.</em></h2><p className="muted">Начните с курса о личностном кризисе — если привычные ориентиры больше не помогают и хочется понять, как двигаться дальше.</p></div>
+        <article className="course-summary"><span className="eyebrow">ОНЛАЙН-КУРС · САМОСТОЯТЕЛЬНАЯ РАБОТА</span><h3>Как выйти из<br /><em>личностного кризиса</em></h3><p className="muted">Для тех, кто устал жить на автомате, потерял интерес к привычным делам или слишком долго откладывает себя на потом.</p><ul className="course-benefits"><li><strong>Понять, чего хотите именно вы.</strong><span>Отделить собственные желания от чужих ожиданий.</span></li><li><strong>Замечать, на что уходят силы.</strong><span>Обратить внимание на привычки, эмоции и отношения.</span></li><li><strong>Перейти от размышлений к действиям.</strong><span>Выбрать небольшие шаги, которые можно пробовать в обычной жизни.</span></li></ul><a className="button" href="#purchase">Узнать об участии <ArrowUpRight size={20} /></a><p className="hero-note">Практики и задания, к которым можно возвращаться.</p></article>
+      </section>
+      <section className="section wrap program questions" id="questions"><div><span className="eyebrow">03 / ПЕРЕД УЧАСТИЕМ</span><h2>Если пока<br /><em>есть вопросы.</em></h2><p className="muted">Необязательно приходить с готовым планом. Достаточно желания уделить внимание себе и попробовать задания.</p></div><div className="topic-list">{questions.map(([n, title, copy]) => <details key={n}><summary><span>{n}</span><h3>{title}</h3><span className="plus" aria-hidden="true">+</span></summary><div className="topic-content"><p>{copy}</p></div></details>)}</div></section>
+      <section className="wrap purchase" id="purchase"><div><span className="eyebrow">04 / УЧАСТИЕ</span><h2>Начните с себя.<br /><em>С одного решения.</em></h2><p>Необязательно знать, как будет выглядеть вся ваша жизнь дальше. Можно начать с того, чтобы услышать собственные желания и выбрать первый посильный шаг.</p><div className="purchase-meta" aria-hidden="true" /></div><div className="purchase-card"><span className="kicker">ОНЛАЙН-КУРС</span><h3>Как выйти из<br /><em>личностного кризиса</em></h3><p className="muted">Разобраться в том, что беспокоит.<br />Понять, чего хочется вам.<br />Начать пробовать новое.</p><div className="participation-space" aria-hidden="true" /><TestEmail /></div></section>
     </main>
-    <footer className="wrap footer"><div className="footer-top"><Brand /><div className="footer-social" aria-hidden="true" /><a className="back-top" href="#course">Наверх <ArrowUpRight size={18} /></a></div><div className="legal"><p>© 2026 Новая точка отсчета.<br />Образовательная программа самопомощи.</p><div className="legal-space" aria-hidden="true" /><p>Материалы курса не являются медицинскими рекомендациями. Программа не заменяет психотерапию или лечение.</p></div></footer>
+    <footer className="wrap footer"><div className="footer-top"><Brand /><div className="footer-social" aria-hidden="true" /><a className="back-top" href="#course">Наверх <ArrowUpRight size={18} /></a></div><div className="legal"><p>© 2026 Курсы и практики.<br />Для самостоятельной работы над собой.</p><div className="legal-space" aria-hidden="true" /><p>Материалы курса не являются медицинскими рекомендациями. Программа не заменяет психотерапию или лечение.</p></div></footer>
   </>;
 }
-

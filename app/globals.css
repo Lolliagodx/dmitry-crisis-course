@@ -1076,3 +1076,101 @@ details[open] .plus {
   color: var(--muted-foreground);
   opacity: 1;
 }
+
+/* Course overview focuses on the visitor's needs rather than a lesson syllabus. */
+.course-wordmark > span {
+  font-size: 0.65rem;
+  letter-spacing: 0.09em;
+}
+.pain-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 32px;
+}
+.pain-next p {
+  max-width: 700px;
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+}
+.text-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary);
+  font-size: 0.86rem;
+  flex-shrink: 0;
+  border-bottom: 1px solid #9db9a3;
+  padding-block: 8px;
+}
+.course-offer {
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.course-summary {
+  padding: 36px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #ffffff;
+  min-width: 0;
+}
+.course-summary h3 {
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  margin-top: 24px;
+}
+.course-summary .muted {
+  max-width: none;
+}
+.course-benefits {
+  list-style: none;
+  margin: 0 0 30px;
+  padding: 0;
+}
+.course-benefits li {
+  border-top: 1px solid var(--border);
+  padding-block: 18px;
+}
+.course-benefits strong,
+.course-benefits span {
+  display: block;
+  font-size: 0.9rem;
+}
+.course-benefits strong {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.course-benefits span {
+  color: var(--muted-foreground);
+}
+.questions {
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 760px) {
+  .pain-next {
+    display: block;
+  }
+  .text-cta {
+    margin-top: 18px;
+  }
+  .course-summary {
+    padding: 26px 22px;
+  }
+  .course-summary .eyebrow {
+    flex-wrap: wrap;
+  }
+  .course-summary .button {
+    width: 100%;
+    gap: 12px;
+  }
+  .course-wordmark > span {
+    font-size: 0.53rem;
+  }
+}
+@media (max-width: 380px) {
+  .header .course-wordmark > span {
+    font-size: 0.48rem;
+  }
+}
