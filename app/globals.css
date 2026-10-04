@@ -1239,9 +1239,72 @@ details[open] .plus {
 }
 .personal-hero-actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 13px;
   margin-top: 30px;
+}
+
+/* Consultation remains an informational offer until booking is approved. */
+.consultation {
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.author-information .author-copy > p {
+  margin: 0 0 22px;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.author-information .author-copy .author-method-note {
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.consultation-details {
+  margin: 0;
+}
+.consultation-details > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-block: 16px;
+  border-top: 1px solid var(--border);
+}
+.consultation-details dt {
+  color: var(--muted-foreground);
+}
+.consultation-details dd {
+  margin: 0;
+  font-weight: 500;
+}
+.consultation-note {
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+.consultation-card .button {
+  margin-top: 24px;
+}
+.consultation-pending:disabled,
+.consultation-pending:disabled:hover {
+  cursor: not-allowed;
+  color: var(--primary);
+  background: #edf3ee;
+  border-color: var(--border);
+  opacity: 1;
+  transform: none;
+  width: 100%;
+  justify-content: center;
+}
+@media (max-width: 760px) {
+  .header nav {
+    gap: 8px 16px;
+    flex-wrap: wrap;
+  }
+  .personal-hero-actions .button {
+    max-width: 100%;
+  }
 }
 .personal-hero-actions .button {
   border-radius: 24px;

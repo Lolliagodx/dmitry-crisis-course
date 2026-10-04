@@ -1,6 +1,7 @@
 import TestEmail from './test-email';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, UserRound, FileText, Leaf } from 'lucide-react';
+import { authorContent, consultation } from './site-content';
 
 const situations = [
   ['01', 'Всё вроде нормально. Но радости нет.', 'Работа, дела, привычный распорядок. Вы справляетесь, но всё чаще спрашиваете себя: «Неужели теперь всегда будет так?»'],
@@ -12,7 +13,8 @@ const questions = [
   ['01', 'Нужно ли заранее знать, чего я хочу?', 'Нет. Курс рассчитан в том числе на ситуацию, когда трудно разобраться в своих желаниях. Вопросы и письменные задания помогают начать этот разговор с собой.'],
   ['02', 'Это только видео или нужно что-то делать?', 'В курсе есть практики и домашние задания для самостоятельной работы. Смотреть материалы можно, но смысл участия — пробовать задания в своей жизни.'],
   ['03', 'Мне нужно изменить сразу всю жизнь?', 'Нет. Можно начать с того, что сейчас беспокоит больше всего, и выбрать посильное действие. Вам не нужно решать все вопросы одновременно.'],
-  ['04', 'Где узнать стоимость и условия участия?', 'Условия участия и оплата пока не опубликованы. Сейчас на сайте доступна только тестовая форма: она не отправляет email и не оформляет покупку.'],
+  ['04', 'Можно начать с личного разговора?', 'Да. Предусмотрена платная вводная консультация с Дмитрием: 30 минут, чтобы обсудить конкретный запрос и дальнейшие шаги. Точная стоимость и способ записи пока уточняются.'],
+  ['05', 'Где узнать стоимость и условия участия в курсе?', 'Условия участия и оплата пока не опубликованы. Сейчас на сайте доступна только тестовая форма: она не отправляет email и не оформляет покупку.'],
 ];
 
 function Brand() {
@@ -24,7 +26,7 @@ export default function Home() {
     <a className="skip" href="#course">Перейти к содержанию</a>
     <header className="header">
       <Brand />
-      <nav aria-label="Основное меню"><a href="#about">Об авторе</a><a href="#program">Курсы</a><a href="#questions">Вопросы</a></nav>
+      <nav aria-label="Основное меню"><a href="#about">Об авторе</a><a href="#consultation">Консультация</a><a href="#program">Курсы</a><a href="#questions">Вопросы</a></nav>
       <div className="header-end"><div className="social-space" aria-hidden="true" /><a className="small-cta" href="#purchase">Участие <ArrowUpRight size={17} /></a></div>
     </header>
     <main>
@@ -36,9 +38,9 @@ export default function Home() {
           <div className="personal-hero-copy">
             <p className="personal-hero-eyebrow">ЛИЧНЫЙ ОПЫТ / КУРСЫ / ПРАКТИКИ</p>
             <h1 id="author-name">Дмитрий<br /><em>Давыдов</em></h1>
-            <p className="personal-hero-role">Автор курса о личностных переменах</p>
-            <p className="personal-hero-description">Помогает разобраться в себе, услышать собственные желания и сделать первый шаг к переменам через личный опыт, практики и самостоятельную работу.</p>
-            <div className="personal-hero-actions"><a className="button" href="#about">Об авторе <ArrowRight size={23} /></a><a className="button button-outline" href="#program">Посмотреть курс <ArrowRight size={23} /></a></div>
+            <p className="personal-hero-role">{authorContent.role}</p>
+            <p className="personal-hero-description">{authorContent.description}</p>
+            <div className="personal-hero-actions"><a className="button" href="#consultation">Личная консультация <ArrowRight size={23} /></a><a className="button button-outline" href="#program">Посмотреть курс <ArrowRight size={23} /></a></div>
             <ul className="personal-hero-features"><li><span className="feature-icon"><UserRound size={28} strokeWidth={1.6} /></span><span>Личный<br />опыт</span></li><li><span className="feature-icon"><FileText size={28} strokeWidth={1.6} /></span><span>Практические<br />задания</span></li><li><span className="feature-icon"><Leaf size={28} strokeWidth={1.6} /></span><span>Мягкий<br />понятный подход</span></li></ul>
           </div>
         </div>
@@ -48,15 +50,20 @@ export default function Home() {
         <div className="approach-grid">{situations.map(([n, title, copy]) => <article key={n}><span className="step">{n}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
         <div className="pain-next"><p>Если узнали себя, можно начать с простого: разобраться, что вас не устраивает и что вы готовы сделать иначе.</p><a className="text-cta" href="#program">Посмотреть курс <ArrowUpRight size={18} /></a></div>
       </div></section>
-      <section className="section wrap author author-information" id="about">
-        <div className="author-copy" aria-hidden="true"><div className="author-bottom"><div className="social-space" /></div></div>
+      <section className="section wrap program author-information" id="about" aria-labelledby="about-title">
+        <div><span className="eyebrow">02 / ОБ АВТОРЕ</span><h2 id="about-title">Опыт, который<br /><em>я прожил сам.</em></h2></div>
+        <div className="author-copy">{authorContent.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<p className="author-method-note">{authorContent.additionalExperience}</p></div>
+      </section>
+      <section className="section wrap program consultation" id="consultation" aria-labelledby="consultation-title">
+        <div><span className="eyebrow">03 / ЛИЧНЫЙ РАЗГОВОР</span><h2 id="consultation-title">Начните со<br /><em>своего запроса.</em></h2><p className="muted">Если сначала хочется поговорить лично, можно начать с короткой консультации с Дмитрием.</p></div>
+        <article className="course-summary consultation-card"><span className="eyebrow">ВВОДНАЯ КОНСУЛЬТАЦИЯ</span><h3>30 минут<br /><em>с Дмитрием</em></h3><p className="muted">Обсудить то, что сейчас беспокоит, получить первичный разбор и наметить дальнейшие шаги.</p><dl className="consultation-details"><div><dt>Формат</dt><dd>Личный созвон</dd></div><div><dt>Продолжительность</dt><dd>{consultation.durationMinutes} минут</dd></div><div><dt>{consultation.priceRub === null ? 'Ориентир стоимости' : 'Стоимость'}</dt><dd>{consultation.priceRub === null ? consultation.discussedPriceRange : `${consultation.priceRub.toLocaleString('ru-RU')} ₽`}</dd></div></dl>{consultation.priceRub === null && <p className="consultation-note">Точная стоимость уточняется.</p>}{consultation.bookingUrl ? <a className="button" href={consultation.bookingUrl}>Записаться на консультацию</a> : <><button className="button consultation-pending" type="button" disabled>Запись скоро откроется</button><p className="consultation-note">Способ записи и оплаты появится здесь.</p></>}</article>
       </section>
       <section className="section wrap program course-offer" id="program">
-        <div><span className="eyebrow">02 / КУРСЫ</span><h2>Когда хочется<br /><em>что-то изменить.</em></h2><p className="muted">Начните с курса о личностном кризисе — если привычные ориентиры больше не помогают и хочется понять, как двигаться дальше.</p></div>
-        <article className="course-summary"><span className="eyebrow">ОНЛАЙН-КУРС · САМОСТОЯТЕЛЬНАЯ РАБОТА</span><h3>Как выйти из<br /><em>личностного кризиса</em></h3><p className="muted">Для тех, кто устал жить на автомате, потерял интерес к привычным делам или слишком долго откладывает себя на потом.</p><ul className="course-benefits"><li><strong>Понять, чего хотите именно вы.</strong><span>Отделить собственные желания от чужих ожиданий.</span></li><li><strong>Замечать, на что уходят силы.</strong><span>Обратить внимание на привычки, эмоции и отношения.</span></li><li><strong>Перейти от размышлений к действиям.</strong><span>Выбрать небольшие шаги, которые можно пробовать в обычной жизни.</span></li></ul><a className="button" href="#purchase">Узнать об участии <ArrowUpRight size={20} /></a><p className="hero-note">Практики и задания, к которым можно возвращаться.</p></article>
+        <div><span className="eyebrow">04 / КУРСЫ</span><h2>Когда хочется<br /><em>что-то изменить.</em></h2><p className="muted">Курс о личностном кризисе — если привычные ориентиры больше не помогают и хочется понять, как двигаться дальше.</p></div>
+        <article className="course-summary"><span className="eyebrow">ОНЛАЙН-КУРС · САМОСТОЯТЕЛЬНАЯ РАБОТА</span><h3>Как выйти из<br /><em>личностного кризиса</em></h3><p className="muted">Для тех, кто устал жить на автомате, потерял интерес к привычным делам или слишком долго откладывает себя на потом.</p><ul className="course-benefits"><li><strong>Понять, чего хотите именно вы.</strong><span>Отделить собственные желания от чужих ожиданий.</span></li><li><strong>Разобраться, на что уходит ресурс.</strong><span>Обратить внимание на работу, отношения и время для отдыха.</span></li><li><strong>Перейти от размышлений к действиям.</strong><span>Выбрать небольшие шаги, которые можно пробовать в обычной жизни.</span></li></ul><a className="button" href="#purchase">Узнать об участии <ArrowUpRight size={20} /></a><p className="hero-note">Практики и задания, к которым можно возвращаться.</p></article>
       </section>
-      <section className="section wrap program questions" id="questions"><div><span className="eyebrow">03 / ПЕРЕД УЧАСТИЕМ</span><h2>Если пока<br /><em>есть вопросы.</em></h2><p className="muted">Необязательно приходить с готовым планом. Достаточно желания уделить внимание себе и попробовать задания.</p></div><div className="topic-list">{questions.map(([n, title, copy]) => <details key={n}><summary><span>{n}</span><h3>{title}</h3><span className="plus" aria-hidden="true">+</span></summary><div className="topic-content"><p>{copy}</p></div></details>)}</div></section>
-      <section className="wrap purchase" id="purchase"><div><span className="eyebrow">04 / УЧАСТИЕ</span><h2>Начните с себя.<br /><em>С одного решения.</em></h2><p>Необязательно знать, как будет выглядеть вся ваша жизнь дальше. Можно начать с того, чтобы услышать собственные желания и выбрать первый посильный шаг.</p><div className="purchase-meta" aria-hidden="true" /></div><div className="purchase-card"><span className="kicker">ОНЛАЙН-КУРС</span><h3>Как выйти из<br /><em>личностного кризиса</em></h3><p className="muted">Разобраться в том, что беспокоит.<br />Понять, чего хочется вам.<br />Начать пробовать новое.</p><div className="participation-space" aria-hidden="true" /><TestEmail /></div></section>
+      <section className="section wrap program questions" id="questions"><div><span className="eyebrow">05 / ПЕРЕД УЧАСТИЕМ</span><h2>Если пока<br /><em>есть вопросы.</em></h2><p className="muted">Необязательно приходить с готовым планом. Достаточно желания уделить внимание себе и попробовать задания.</p></div><div className="topic-list">{questions.map(([n, title, copy]) => <details key={n}><summary><span>{n}</span><h3>{title}</h3><span className="plus" aria-hidden="true">+</span></summary><div className="topic-content"><p>{copy}</p></div></details>)}</div></section>
+      <section className="wrap purchase" id="purchase"><div><span className="eyebrow">06 / УЧАСТИЕ</span><h2>Начните с себя.<br /><em>С одного решения.</em></h2><p>Необязательно знать, как будет выглядеть вся ваша жизнь дальше. Можно начать с того, чтобы услышать собственные желания и выбрать первый посильный шаг.</p><div className="purchase-meta" aria-hidden="true" /></div><div className="purchase-card"><span className="kicker">ОНЛАЙН-КУРС</span><h3>Как выйти из<br /><em>личностного кризиса</em></h3><p className="muted">Разобраться в том, что беспокоит.<br />Понять, чего хочется вам.<br />Начать пробовать новое.</p><div className="participation-space" aria-hidden="true" /><TestEmail /></div></section>
     </main>
     <footer className="wrap footer"><div className="footer-top"><Brand /><div className="footer-social" aria-hidden="true" /><a className="back-top" href="#course">Наверх <ArrowUpRight size={18} /></a></div><div className="legal"><p>© 2026 Курсы и практики.<br />Для самостоятельной работы над собой.</p><div className="legal-space" aria-hidden="true" /><p>Материалы курса не являются медицинскими рекомендациями. Программа не заменяет психотерапию или лечение.</p></div></footer>
   </>;
