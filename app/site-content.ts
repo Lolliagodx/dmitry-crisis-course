@@ -9,8 +9,8 @@ export const authorContent = {
   additionalExperience: 'Опыт телесных практик остаётся одним из дополнительных инструментов, а не основным направлением работы.',
 };
 
-// The call is confirmed; exact price and booking method are still pending.
-// Set priceRub and bookingUrl only after approval. No payment integration here.
+// The call and price are confirmed; the booking method is still pending.
+// Setting bookingUrl does not connect payment processing.
 export const consultation: {
   durationMinutes: number;
   discussedPriceRange: string;
@@ -19,6 +19,6 @@ export const consultation: {
 } = {
   durationMinutes: 30,
   discussedPriceRange: '2 000–2 500 ₽',
-  priceRub: null,
+  priceRub: 5000,
   bookingUrl: null,
 };

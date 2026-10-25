@@ -11,7 +11,8 @@
     "start": "node scripts/preview.mjs",
     "lint": "oxlint",
     "format": "oxfmt",
-    "preview": "node scripts/preview.mjs"
+    "preview": "node scripts/preview.mjs",
+    "test:worker": "node --test worker/index.test.mjs"
   },
   "dependencies": {
     "react": "19.2.6",

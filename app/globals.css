@@ -954,6 +954,23 @@ details[open] .plus {
   font-size: 1rem;
   border-radius: 0;
 }
+.test-email button:disabled,
+.test-email input:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+.honeypot {
+  height: 0;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px;
+}
+.turnstile-slot {
+  min-height: 65px;
+  width: 100%;
+}
 .test-email input:focus-visible,
 .test-email button:focus-visible {
   outline: 2px solid var(--primary);

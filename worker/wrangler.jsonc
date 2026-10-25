@@ -1,0 +1,26 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "dmitry-crisis-course-mailer",
+  "main": "index.mjs",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "observability": { "enabled": true },
+  "vars": {
+    "ALLOWED_ORIGIN": "https://lolliagodx.github.io",
+    "EXPECTED_HOSTNAME": "lolliagodx.github.io",
+    "COURSE_URL": "https://drive.google.com/drive/folders/1_IVqxYQXvLwIlyV4_MU6OIMJNsprQOkW?usp=sharing",
+    "RESEND_FROM": ""
+  },
+  "ratelimits": [
+    {
+      "name": "REQUEST_RATE_LIMITER",
+      "namespace_id": "12001",
+      "simple": { "limit": 10, "period": 60 }
+    },
+    {
+      "name": "RECIPIENT_RATE_LIMITER",
+      "namespace_id": "12002",
+      "simple": { "limit": 2, "period": 60 }
+    }
+  ]
+}
