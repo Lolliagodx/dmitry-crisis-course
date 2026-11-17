@@ -1654,3 +1654,19 @@ details[open] .plus {
     padding: 13px;
   }
 }
+
+.course-purchase-pending:disabled {
+  width: 100%;
+  justify-content: center;
+  background: #edf3ee;
+  color: var(--primary);
+  border-color: var(--border);
+  cursor: not-allowed;
+  transform: none;
+}
+.course-purchase-note {
+  margin-top: 14px;
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+}
+
