@@ -3,7 +3,9 @@ declare(strict_types=1);
 require dirname(__DIR__, 3) . '/course-payments/lib.php';
 header('Cache-Control: no-store'); header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: no-referrer'); header('X-Frame-Options: DENY');
-header("Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'");
+// Chromium also checks a form submission's redirect destination against form-action.
+// Keep the allowlist aligned with checkoutUrl() rather than allowing arbitrary HTTPS sites.
+header("Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; form-action 'self' https://yoomoney.ru https://yookassa.ru; frame-ancestors 'none'; base-uri 'none'");
 $c = settings();
 umask(0077);
 if (!is_dir(dirname(__DIR__, 3) . '/course-payments/sessions')) mkdir(dirname(__DIR__, 3) . '/course-payments/sessions', 0700);
