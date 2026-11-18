@@ -40,3 +40,9 @@ next-env.d.ts
 *.tsbuildinfo
 
 !.env.example
+
+/payments/vendor/
+/payments/config.php
+/payments/*.sqlite*
+/payments/*.lock
+/payments/sessions/
